@@ -1,3 +1,3 @@
 <template>
-  <Count />
+  <div>Index</div>
 </template>

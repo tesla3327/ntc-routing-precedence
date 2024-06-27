@@ -1,17 +1,29 @@
 <template>
   <div class="prose m-auto max-w-xl py-8">
-    <h1>Keepin' those pages alive</h1>
+    <h1>Routing Precedence</h1>
     <p>
-      We can prevent Nuxt from destroying our pages by using
-      the <code>keepalive</code> property in different ways.
+      A file will always take precedence over a directory
+      with the same name. In this example, when we go to the
+      route
+      <code>/child</code> we match to the file
+      <code>/pages/child.vue</code> and <em>not</em> the
+      file at <code>/pages/child/index.vue</code>.
     </p>
     <p>
-      Click around on the links below while modifying the
-      code to see the different behaviours.
+      However, if we get rid of the
+      <code>/pages/child.vue</code> component (or rename it
+      just to test) we can render these other routes
+      directly.
+    </p>
+    <p>
+      The other solution is to add a
+      <code>NuxtPage</code> component to
+      <code>/pages/child.vue</code> so that we can then
+      render the child routes.
     </p>
     <hr />
     <pre>{{ $route.path }}</pre>
-    <div class="grid grid-cols-5 justify-between">
+    <div class="grid grid-cols-4 justify-between">
       <NuxtLink v-for="link in nav" :to="link.to">
         {{ link.name }}
       </NuxtLink>
@@ -30,9 +42,5 @@ const nav = [
   { name: 'Child', to: '/child' },
   { name: 'Child/One', to: '/child/one' },
   { name: 'Child/Two', to: '/child/two' },
-  { name: 'Child/Three', to: '/child/three' },
-
-  { name: 'Alive (one)', to: '/alive-one' },
-  { name: 'Alive (two)', to: '/alive-two' },
 ];
 </script>

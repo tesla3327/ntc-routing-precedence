@@ -1,3 +1,3 @@
 <template>
-  <Count />
+  <div>Two</div>
 </template>
